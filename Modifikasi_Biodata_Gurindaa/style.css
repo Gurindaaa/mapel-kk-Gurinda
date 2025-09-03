@@ -1,0 +1,112 @@
+ { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #dbeafe, #fdf2f8);
+  color: #181718;
+  line-height: 1.6;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #f147d2;
+  color: white;
+  gap: 2rem;
+}
+
+.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 5px solid #fbf8fe;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.intro h1 {
+  font-size: 2.5rem;
+}
+.intro p {
+  color: #ebeaec;
+}
+.btn {
+  display: inline-block;
+  margin-top: .8rem;
+  background:#eae9ec;
+  color: rgb(16, 16, 16);
+  padding: .6rem 1rem;
+  border-radius: .5rem;
+  text-decoration: none;
+}
+.btn:hover {
+  background: #2563eb;
+}
+
+/* Container */
+.container {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+h2 {
+  margin-bottom: .5rem;
+  color: #0f172a;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+ul li {
+  margin: .3rem 0;
+}
+
+/* Skills */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.skills span {
+  background: #e2e8f0;
+  border-radius: .5rem;
+  padding: .4rem .8rem;
+  font-size: .9rem;
+}
+
+/* Card */
+.card {
+  background: white;
+  padding: 1rem;
+  border-radius: .6rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  margin-top: .8rem;
+}
+.card h3 {
+  margin-bottom: .3rem;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: #f1f5f9;
+  color: #64748b;
+  margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero {
+    flex-direction: column;
+text-align: center;
+}
+}
