@@ -32,6 +32,9 @@ if ($result->num_rows > 0) {
     } elseif ($user['level_user'] == 'guest') {
         header("Location: guest/guest.php");
         exit;
+    } elseif ($user['level_user'] == 'admin') {
+        header("Location: admin/a-admin.php");
+        exit;
     } else {
         echo "Role tidak dikenal.";
     }

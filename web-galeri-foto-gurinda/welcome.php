@@ -1,5 +1,12 @@
 <?php 
 session_start(); 
+
+// Jika login baru saja dilakukan, simpan username ke session
+if (isset($_POST['username'])) {
+  $_SESSION['username'] = $_POST['username'];
+}
+
+// Jika belum login, arahkan kembali ke halaman login
 if (!isset($_SESSION['username'])) {
   header("Location: index.php"); 
   exit;
@@ -49,10 +56,9 @@ if (!isset($_SESSION['username'])) {
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <!-- Brand -->
-    <a class="navbar-brand" href="#">Galeri Foto</a>
+<span class="navbar-text me-2">
+  Selamat datang, <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong>!
+</span>
 
     <!-- Toggle button (HP mode) -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
