@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="'viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Aplikasi Pencatat Tugas Sekolah</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link
@@ -39,20 +39,20 @@
             }
          </style>
 </head>
-<body class="bg-gradient-to-br from=blue-100 via-white to-green-100 min-h-screen font-sans">
+<body class="bg-gradient-to-br from-blue-100 via-white to-green-100 min-h-screen font-sans">
  <div class="content mx-auto max-w-2x1 p-6">
     <!-- Header -->
     <header class="text-center mb-8 fade-in">
     <h1 class="text-4x1 font-bold text-gray-800 mb-2">Aplikasi Pencatat Tugas Sekolah</h1>
     <p clas="text-gray-600">
-        Aplikasi pencatat tugas Sekolah ini adalah aplikasi pencatat untuk mempermudah siswa 
+        Aplikasi pencatat tugas Sekolah ini adalah aplikasi pencatat untuk mempermudah siswa
         untuk mendaftar seluruh tugas-tugas sekolah yang telah diberikan bpak ibu guru pengajar.
     </p>
     </header>
 
     <!-- Add Task Form -->
     <div class="bg-white rounded-x1 shadow-lg p-6 mb-6 fade-in">
-      <from id="addTaskForm" class="flex flex-col gap-6">
+      <form id="addTaskForm" class="flex flex-col gap-6">
         <input
           type="text"
           id="taskinput"
@@ -76,7 +76,7 @@
           type="date"
           id="deadlineInput"
           class="px-4 py-3 border border-gray-300 rounded-ig focus:ring-2 focus:ring-blue-500
-          focus:outline-none transtion" 
+          focus:outline-none transtion"
           required
           />
           <button
@@ -116,7 +116,236 @@
           focus:outline-none"
           required
           />
-     </div>
+        <input
+          type="text"
+          id="editSubjactInput"
+          class="w-full px-4 py-3 border border-gray-300 rounded-ig focus:ring-2 focus:ring-blue-500
+          focus:outline-none"
+          required
+        />
+        <table for="editDeadlineInput" class="text-gray-700 font-semibold"
+         Deadline (Batas Akhir Pengerjaan Tugas):
+         </label>
+        <input
+         type="date"
+          id="editDeadlineInput"
+          class="w-full px-4 py-3 border border-gray-300 rounded-ig focus:ring-2 focus:ring-blue-500
+          focus:outline-none"
+          required
+        />
+        <div class="flex gap-6">
+         <button
+          type="submit"
+          id="saveEditBtn"
+          class="border-gray-600 hover:border-gray-700 text-white px-4 py-2 rounded-ig flex-1 transtion"
+         >
+          Simpan
+         </button>
+         <button
+          type="button"
+          id="cancelEditBtn"
+          class="bg-gray-600 hover:bg-green-700 text-white px-4 py-2 rounded-ig flex-1 transtion"
+         >
+          Batal
+         </button>
+       </div>
+     </form>
+   </div>
 </div>
+
+        <script>
+          // Elements
+          const taskinput = document.getElementById("taskInput");
+          const subjectInput = document.getElementById("subjectInput");
+          const deadlineInput = document.getElementById("deadlineInput");
+          const addTaskForm = document.getElementById("addTaskForm");
+          const taskList = document.getElementById("taskList");
+
+          const editModal = document.getElementById("editModal");
+          const editForm = document.getElementById("editForm");
+          const editTaskInput = document.getElementById("editTaskInput");
+          const editSubjactInput = document.getElementById("editSubjactInput");
+          const editDeadlineInput = document.getElementById("editDeadlineInput");
+          const cancelEditBtn = document.getElementById("cancelEditBtn");
+
+          // Taskz array (localStorage)
+          let tasks = JSON.parse(localStorage.getItem("schoolTasks")) || [] ;
+          let editIndex = null;
+
+          // Load tasks on page load
+          loadTasks();
+
+          // Add new task
+          addTaskForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const taskText = taskinput.value.trim();
+            const subjectText = subjectInput.value.trim();
+            const deadlineDate = deadlineInput.value;
+           
+            if (taskText && subjactText && deadlineDate) {
+              tasks.push({
+                text: taskText,
+                subject: subjectText,
+                deadline: deadlineDate,
+                completed: false,
+              });
+
+              saveTasks();
+              loadTasks();
+              addTaskForm.reset();
+              taskinput.focus();
+            }
+          });
+          // Save tasks to localStorage
+          function saveTasks() {
+            localStorage.setItem("schoolTasks", JSON.stringify(tasks));
+          }
+
+          // load and display tasks
+          function loadTasks() {
+            taskList.innerHTML = "";
+            if (task.length === 0) {
+              taskList.innerHTML =
+                 '<li class="text-center text-gray-500">No tasks added yet.</li>';
+              return;
+            }
+            tasks.forEach((task, index) => {
+              const li = document.createElement("li");
+              li.className = `flex-col sm:flex-row sm:items-center gap-2
+              sm:gap-4 p-4 bg-gray-50 rounded-ig border border-gray-200 fade-in ${
+                task.completed ? "opacity-75" : ""
+              }`;
+
+              // Left side: checkbox and main info
+              const leftDiv = document.createElement("div");
+              leftDiv.className = "flex items-center gap-4 flex-1";
+
+              // Checkbox for completion
+              const checkbox = document.createElement("input");
+              checkbox.type = "checkbox";
+              checkbox.checked = task.completed;
+              checkbox.className =
+                "w-5 h-5 text-green-600 rounded focus:ring:green-500";
+              checkbox.addEventListener("change", () => {
+                tasks[index].completed = checkbox.checked;
+                saveTasks();
+                loadTasks();
+              });
+             
+              // Task text and subject + deadline
+              const texttDiv = document.createElement("div");
+              textDiv.className = "flex flex-col";
+
+              const taskTextSpan = document.createElement("span");
+              taskTextSpan.textContent = task.text;
+              taskTextSpan.className = `font-semibold $ {
+                 task.completed ? "line-through text-gray-500" : "text-gray-800"
+              }`;
+
+              const subjectSpan = document.createElement("span");
+              subjectSpan.textContent = task.text;
+              subjectSpan.className = `font-semibold ${
+                 task.completed ? "line-through text-gray-400" : "text-gray-600"
+              }`;
+
+             const deadlineSpan = document.createElement("span");
+            // Format date to more readable form
+             const deadlineDateObj = new Date (task.deadline);
+             const options = {year: "number", month: "short", day: "number" };
+             const formattedDeadline = deadlineDateObj.toLocaleDateString(
+              undefined,
+              options
+            );
+              deadlineSpan.textContent = `Deadline: ${formattedDeadline}`;
+              deadlineSpan.className = `text-sm ${
+              task.completed ? "line-through text-gray-400" : "text-red-600"
+             }`;
+
+             textDiv.appendchild(taskTextSpan);
+             textDiv.appendchild(subjectSpan);
+             textDiv.appendchild(deadlineSpan);
+
+             leftDiv.appendchild(checkbox);
+             leftDiv.appendchild(textDiv);
+          
+             // Right side: edit and delet buttons
+             const rightDiv = document.createElement("div");
+             righhtDiv.clasName = "flex gap-2";
+
+             // Edit button
+             const editBtn = document.createElement("button");
+             editBtn.innerHTML = '<i class="fas fa-edit text-blue-600"></i>';
+             editBtn.className = "hover:bg-blue-100 p-2 rounded transition";
+             editBtn.addEventListener("click", () => openEditModal(index));
+
+             //DElete button
+             const deletBtn = document.createElement("button");
+             deletBtn.innerHTML = '<i class="fas fa-trash-alt text-red-600"></i>';
+             deletBtn.className = "hover:bg-red-100 p-2 rounded transition"
+             deletBtn.addEventListener("click", () => {
+              if (confirm("Are you sure you want to delet this task?")){
+                tasks.splice(index, 1);
+                saveTasks();
+                loadTasks();
+              }
+            });
+
+            rightDiv.appendChild(leftBtn);
+            rightDiv.appendChild(deleteBtn);
+
+            li.appendChild(leftDiv);
+            li.appendChild(rightDiv);
+
+            taskList.appendechi(li);
+            });
+          }
+
+          // Open edit modal
+          function openEditModal(index) {
+          editIndex = index;
+          const task = tasks[index];
+          editTaskInput.value = task.text;
+          editSubjectInput.value = task.subject;
+          editDeadlineInput.value = task.deadline;
+          editModal.classList.remove("opacity-0", "pointer-events-none");
+          editModal.classList.add("opacity-100", "pointer-events-auto");
+          editTaskInput.focus();
+          }
+
+          // Save edited task
+          editForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (editIndex !== null) {
+               const newText = editTaskInput.value.trim();
+               const newSubject = editSubjectInput.value.trim();
+               const newDeadline = editDeadlineInput.value;
+               if (newText && newSubject && newDeadline) {
+                 tasks[editIndex].text = newText;
+                 tasks[editIndex].subject = newSubject;
+                 tasks[editIndex].deadline = newDeadline;
+                 saveTasks();
+                 loadTasks();
+              }
+            }
+            closeEditModal();
+            });
+
+            //Cancel edit
+            cancelEditBtn.addEventListener("click", closeEditModal);
+
+            // Close edit modal
+            function closeEditModal() {
+              editModal.classList.remove("opacity-100", "pointer-events-auto");
+              editModal.classList.add("opacity-0", "pointer-events-none");
+              editIndex = null;
+              }
+
+            // Keyboard shortcuts
+            document.addEventListener("keydown", (e) =>{
+              if (e.key === "Escape" && editModal.classList.contains("opacity-100")) {
+                closeEditModal();
+            }
+        });
+     </script>
 </body>
 </html>
