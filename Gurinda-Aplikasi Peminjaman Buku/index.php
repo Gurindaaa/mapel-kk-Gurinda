@@ -4,8 +4,19 @@ if (!isset($_SESSION['login'])) {
     header("Location: login.php");
     exit;
 }
-?>
 
+include "koneksi.php";
+
+// hitung anggota
+$qAnggota = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM anggota");
+$dAnggota = mysqli_fetch_assoc($qAnggota);
+$totalAnggota = $dAnggota['total'];
+
+// hitung buku
+$qBuku = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM buku");
+$dBuku = mysqli_fetch_assoc($qBuku);
+$totalBuku = $dBuku['total'];
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -19,8 +30,6 @@ body{
     background:#f4f6f9;
     font-family:'Segoe UI', sans-serif;
 }
-
-/* SIDEBAR */
 .sidebar{
     width:230px;
     height:100vh;
@@ -29,11 +38,7 @@ body{
     color:white;
     padding:20px 15px;
 }
-
-.sidebar h4{
-    font-weight:600;
-}
-
+.sidebar h4{ font-weight:600; }
 .sidebar a{
     color:white;
     display:block;
@@ -43,19 +48,14 @@ body{
     margin-bottom:5px;
     transition:.2s;
 }
-
 .sidebar a:hover{
     background:rgba(255,255,255,0.18);
     padding-left:16px;
 }
-
-/* CONTENT */
 .content{
     margin-left:250px;
     padding:25px;
 }
-
-/* TOPBAR */
 .topbar{
     background:white;
     padding:15px 20px;
@@ -63,8 +63,6 @@ body{
     box-shadow:0 5px 15px rgba(0,0,0,0.06);
     margin-bottom:20px;
 }
-
-/* BOX STAT */
 .stat-box{
     border-radius:16px;
     color:white;
@@ -73,20 +71,15 @@ body{
     position:relative;
     overflow:hidden;
 }
-
 .stat-box i{
     font-size:32px;
     opacity:.85;
 }
-
 .stat-box:hover{
     transform:translateY(-5px);
     box-shadow:0 15px 30px rgba(0,0,0,0.18);
 }
-
-.box-link{
-    text-decoration:none;
-}
+.box-link{ text-decoration:none; }
 </style>
 </head>
 <body>
@@ -94,14 +87,12 @@ body{
 <!-- SIDEBAR -->
 <div class="sidebar">
     <h4 class="mb-4">📚 PERPUSTAKAAN</h4>
-
     <a href="index.php"><i class="bi bi-speedometer2"></i> Dashboard</a>
     <a href="anggota.php"><i class="bi bi-people"></i> Data Anggota</a>
     <a href="buku.php"><i class="bi bi-book"></i> Data Buku</a>
     <a href="pengunjung.php"><i class="bi bi-person"></i> Pengunjung</a>
     <a href="pinjaman.php"><i class="bi bi-journal-arrow-up"></i> Pinjam Buku</a>
     <a href="data.php"><i class="bi bi-bar-chart"></i> Data Peminjaman</a>
-
     <hr>
     <a href="logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a>
 </div>
@@ -133,7 +124,7 @@ body{
                     <div class="d-flex justify-content-between">
                         <div>
                             <h6>Anggota</h6>
-                            <h2>3</h2>
+                            <h2><?= $totalAnggota; ?></h2>
                         </div>
                         <i class="bi bi-people-fill"></i>
                     </div>
@@ -148,7 +139,7 @@ body{
                     <div class="d-flex justify-content-between">
                         <div>
                             <h6>Buku</h6>
-                            <h2>5</h2>
+                            <h2><?= $totalBuku; ?></h2>
                         </div>
                         <i class="bi bi-book-fill"></i>
                     </div>
@@ -189,6 +180,5 @@ body{
     </div>
 
 </div>
-
 </body>
 </html>
