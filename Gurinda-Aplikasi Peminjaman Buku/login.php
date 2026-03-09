@@ -73,7 +73,7 @@ body{
 <div class="login-card">
 
     <div class="text-center mb-3">
-        <h4 class="login-title">📚 Perpustakaan</h4>
+        <h4 class="login-title">📚 Aplikasi Peminjaman Buku</h4>
         <small class="text-muted">Silakan login ke sistem</small>
     </div>
 
@@ -98,9 +98,8 @@ body{
         </button>
 
     </form>
-
     <div class="text-center mt-3">
-        <small class="text-muted">© Sistem Perpustakaan</small>
+        <small class="text-muted">© 2026 Gurinda Febri</small>
     </div>
 
 </div>

@@ -13,12 +13,25 @@ $anggota = [
 "ANDI RIZKI FARAWANSYA",
 "ANNISA HUMAIRA AZZAHRA",
 "BERTHA ELLYA TAMARA",
-"ESTER APRILLIA",
-"FAJAR RAMADHAN",
-"INDRA SAPUTRA",
-"NADIA PUTRI",
-"RIZKY ADITYA",
-"SYIFA NURHALIZA"
+"ESTER APRILLITA",
+"GURINDA PEBRI",
+"KADEK STEPANI PUTRI",
+"MARSELLA NGANG",
+"MARSYA ADELIA FRISCA",
+"MELANI AWALIAH",
+"MOH VILDAN WAHYUDA SHOKHIBULLA",
+"MUHAMAD HASAN",
+"MUHAMMAD HARIB FEBRIAN",
+"MUHAMMAD IRSYAD",
+"MUHAMMAD MAULANA",
+"PUTRI BAREK",
+"RENDI HARTONO",
+"REZKY ANANDA",
+"RIAN DIKA RANGGA RADITIA",
+"RIANTO",
+"SELJUBIMA KALTIM",
+"SITI MAULIDAH",
+"VERY FERNANDO"
 ];
 
 // data buku
@@ -53,10 +66,10 @@ font-family:'Segoe UI',sans-serif;
 width:240px;
 height:100vh;
 position:fixed;
-background:linear-gradient(180deg,#2563eb,#1e40af);
+background:linear-gradient(180deg,#7c3aed,#4f46e5);
 color:white;
 padding:25px 18px;
-box-shadow:4px 0 15px rgba(0,0,0,0.1);
+box-shadow:4px 0 20px rgba(0,0,0,0.15);
 }
 
 .sidebar h4{
@@ -70,15 +83,15 @@ color:white;
 display:block;
 padding:12px 14px;
 text-decoration:none;
-border-radius:10px;
+border-radius:12px;
 margin-bottom:6px;
-transition:0.3s;
+transition:0.25s;
 font-size:15px;
 }
 
 .sidebar a:hover{
 background:rgba(255,255,255,0.2);
-padding-left:20px;
+padding-left:22px;
 }
 
 /* CONTENT */
@@ -93,34 +106,35 @@ padding:30px;
 .topbar{
 background:white;
 padding:20px;
-border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,0.08);
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
 margin-bottom:25px;
 }
 
 /* WELCOME CARD */
 
 .welcome-card{
-background:linear-gradient(135deg,#3b82f6,#6366f1);
+background:linear-gradient(135deg,#6366f1,#8b5cf6);
 color:white;
 padding:25px;
-border-radius:18px;
+border-radius:20px;
 margin-bottom:25px;
-box-shadow:0 10px 25px rgba(0,0,0,0.15);
+box-shadow:0 15px 35px rgba(0,0,0,0.18);
 }
 
 /* STAT BOX */
 
 .stat-box{
-border-radius:18px;
+border-radius:20px;
 color:white;
 padding:25px;
 transition:.3s;
-box-shadow:0 8px 20px rgba(0,0,0,0.15);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
 .stat-box:hover{
-transform:translateY(-8px);
+transform:translateY(-10px);
+box-shadow:0 15px 35px rgba(0,0,0,0.2);
 }
 
 .stat-box i{
@@ -128,12 +142,23 @@ font-size:38px;
 opacity:0.9;
 }
 
-/* warna box */
+/* WARNA BOX */
 
-.box1{background:linear-gradient(135deg,#3b82f6,#2563eb);}
-.box2{background:linear-gradient(135deg,#ef4444,#dc2626);}
-.box3{background:linear-gradient(135deg,#22c55e,#16a34a);}
-.box4{background:linear-gradient(135deg,#f59e0b,#d97706);}
+.box1{
+background:linear-gradient(135deg,#6366f1,#4f46e5);
+}
+
+.box2{
+background:linear-gradient(135deg,#ec4899,#db2777);
+}
+
+.box3{
+background:linear-gradient(135deg,#22c55e,#16a34a);
+}
+
+.box4{
+background:linear-gradient(135deg,#f59e0b,#d97706);
+}
 
 .box-link{
 text-decoration:none;
