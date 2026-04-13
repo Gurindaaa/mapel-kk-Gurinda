@@ -152,16 +152,23 @@ background:linear-gradient(135deg,#6366f1,#4f46e5);
 background:linear-gradient(135deg,#ec4899,#db2777);
 }
 
-.box3{
-background:linear-gradient(135deg,#22c55e,#16a34a);
-}
-
 .box4{
 background:linear-gradient(135deg,#f59e0b,#d97706);
 }
 
 .box-link{
 text-decoration:none;
+}
+
+/* FOOTER COPYRIGHT */
+
+.footer{
+position:fixed;
+bottom:10px;
+left:50%;
+transform:translateX(-50%);
+color:#666;
+font-size:14px;
 }
 
 </style>
@@ -176,7 +183,6 @@ text-decoration:none;
 <a href="index.php"><i class="bi bi-speedometer2"></i> Dashboard</a>
 <a href="anggota.php"><i class="bi bi-people"></i> Data Anggota</a>
 <a href="buku.php"><i class="bi bi-book"></i> Data Buku</a>
-<a href="pengunjung.php"><i class="bi bi-person"></i> Pengunjung</a>
 <a href="pinjaman.php"><i class="bi bi-journal-arrow-up"></i> Pinjam Buku</a>
 <a href="data.php"><i class="bi bi-bar-chart"></i> Data Peminjaman</a>
 
@@ -188,8 +194,6 @@ text-decoration:none;
 
 <!-- CONTENT -->
 <div class="content">
-
-<!-- TOPBAR -->
 
 <div class="topbar d-flex justify-content-between align-items-center">
 
@@ -207,8 +211,6 @@ Selamat datang, <b><?php echo $_SESSION['user']; ?></b>
 
 </div>
 
-<!-- WELCOME -->
-
 <div class="welcome-card">
 
 <h4>Selamat Datang di Sistem Perpustakaan 📖</h4>
@@ -219,85 +221,46 @@ Kelola data buku, anggota, dan peminjaman dengan mudah.
 
 </div>
 
-<!-- STAT BOX -->
-
 <div class="row g-4">
 
-<div class="col-md-3">
+<div class="col-md-4">
 <a href="anggota.php" class="box-link">
 <div class="stat-box box1">
-
 <div class="d-flex justify-content-between">
-
 <div>
 <h6>Anggota</h6>
 <h2><?= $totalAnggota; ?></h2>
 </div>
-
 <i class="bi bi-people-fill"></i>
-
 </div>
-
 </div>
 </a>
 </div>
 
-
-<div class="col-md-3">
+<div class="col-md-4">
 <a href="buku.php" class="box-link">
 <div class="stat-box box2">
-
 <div class="d-flex justify-content-between">
-
 <div>
 <h6>Buku</h6>
 <h2><?= $totalBuku; ?></h2>
 </div>
-
 <i class="bi bi-book-fill"></i>
-
 </div>
-
 </div>
 </a>
 </div>
 
-
-<div class="col-md-3">
-<a href="pengunjung.php" class="box-link">
-<div class="stat-box box3">
-
-<div class="d-flex justify-content-between">
-
-<div>
-<h6>Pengunjung</h6>
-<h2>0</h2>
-</div>
-
-<i class="bi bi-person-check-fill"></i>
-
-</div>
-
-</div>
-</a>
-</div>
-
-
-<div class="col-md-3">
+<div class="col-md-4">
 <a href="data.php" class="box-link">
 <div class="stat-box box4">
-
 <div class="d-flex justify-content-between">
-
 <div>
 <h6>Peminjaman</h6>
 <h2>0</h2>
 </div>
-
 <i class="bi bi-journal-text"></i>
-
 </div>
-
 </div>
 </a>
 </div>
@@ -305,6 +268,12 @@ Kelola data buku, anggota, dan peminjaman dengan mudah.
 </div>
 
 </div>
+
+<!-- COPYRIGHT -->
+
+<footer class="footer text-center">
+© 2026 | Dibuat oleh Gurinda Febri
+</footer>
 
 </body>
 </html>
