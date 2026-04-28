@@ -32,11 +32,30 @@ include '../template/navbar.php';
         <tbody>
         <?php
         $no=1;
-        $q = mysqli_query(&conn,"SELECT * FROM tb_user");
+        $q = mysqli_query($conn,"SELECT * FROM tb_user");
 
         while($d = mysqli_fetch_assoc($q)){
         ?>
-        
-        }
-        </tbody>
-     </table>
+            <tr>
+                <td><?= $no++ ?></td>
+                <td><?= $d['nama_lengkap'] ?></td>
+                <td><?= $d['username']?></td>
+                <td><span class="badge bg-info"><?=$d['role'] ?></span></td>
+                <td>
+                    <?= $d['status_aktif'] ?
+                          '<span class="badge bg-success">Aktif</span>' :
+                          '<span class="badge bg-danger">Nonaktif</span>' ?>
+                </td>
+                <td>
+                    <a href="edit.php?id=<?= $d['id_user'] ?>" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="hapus.php?id=<?=$d['id_user'] ?>"
+                    onclick="return confirm('Hapus data?')"
+                    class="btn btn-danger btn-sm">Hapus</a>
+                    </td>
+               </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+</div>
+
+<?php include '../template/footer.php'; ?>
