@@ -8,26 +8,23 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
 
     $query = mysqli_query($conn, "
-        SELECT * FROM tb_user
-        WHERE username=$username
-        AND password=$password`
+        SELECT * FROM tb_user 
+        WHERE username='$username' 
+        AND password='$password'
         AND status_aktif=1
-        ");
+    ");
 
-if (mysqli_num_rows($query) > 0) {
-    $data = mysqli_fetch_assoc($query);
+    if (mysqli_num_rows($query) > 0) {
+        $data = mysqli_fetch_assoc($query);
 
-    $_SESSION['id_user'] = $data['id_user'];
-    $_SESSION['role'] = $data['role'];
-    $_SESSION['nama_lengkap'] = $data['nama_lengkap'];
+        $_SESSION['id_user'] = $data['id_user'];
+        $_SESSION['role']    = $data['role'];
+        $_SESSION['nama']    = $data['nama_lengkap'];
 
-    include config/log.php;
-    logAktivitas($conn, "login ke sistem");
-
-    header("Location: dashboard/index.php");
-}else{
-    $error = "Username atau passwoard salah!";
-}
+        header("Location: dashboard/index.php");
+    } else {
+        $error = "Username atau password salah!";
+    }
 }
 ?>
 
@@ -40,10 +37,10 @@ if (mysqli_num_rows($query) > 0) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-Icons/font/bootstrap-Icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        body{
+        body {
             background: linear-gradient(135deg, #3a7bd5, #00d2ff);
             height: 100vh;
         }
@@ -58,7 +55,7 @@ if (mysqli_num_rows($query) > 0) {
         }
         .login-card {
             border-radius: 15px;
-            box-shadow: 0 8px 25px grab(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
 
         .form-control {
@@ -74,53 +71,53 @@ if (mysqli_num_rows($query) > 0) {
 <body>
 
 <div class="container d-flex justify-content-center align-items-center" style="height:100vh;">
-
-     <div class="card login-card p-4" style="width:350px;">
-
-     <div class="text-center mb-3">
-        <img src="logo.jpg"
-        alt="Logo Parkir App"
-        class="logo-login mb-2">
-        <h3>Aplikasi Parkir</h3>
-        <p class="text-muted">
+    
+    <div class="card login-card p-4" style="width:350px;">
+        
+        <div class="text-center mb-3">
+            <img src="logo.jpg" 
+            alt="Logo Parkir App"
+            class="logo-login mb-2">
+            <h3>Aplikasi Parkir</h3>
+            <p class="text-muted">
             Silahkan Login
-        </p>
-     </div>
-     <?php if(isset($error)) { ?>
-         <div clas="alert alert-danger"><?= $error ?></div>
+            </p>
+        </div>
+        <?php if(isset($error)) { ?>
+            <div class="alert alert-danger"><?= $error ?></div>
         <?php } ?>
 
         <form method="POST">
-        
-        <div class="mb-3">
-           <label>Username</label>
-           <div class="input-group">
-               <span class="input-group-text"><i class="bi bi-person"></i></span>
-               <input type="text" name="username" class="form-control" required>
-            </div>
-        </div>
 
-        <div class="mb-3"
-            <label>Password</label>
-            <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-lock"></i></span>
-               <input type="password" name="password" class="form-control" required>
+            <div class="mb-3">
+                <label>Username</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
             </div>
-        </div>
 
-        <button name="login" class="btn btn-primary w-100 btn-login">
-            <i class="bi bi-box-arrow-in-right"></i> Login
-        </button>
-        <div class="text-center mb-3">
-        <small class="text-muted">
-        Akun hanya dapat dibuat oleh admin. Silahkan hubungi admin jika Anda belum memiliki akun.
-        </small>
+            <div class="mb-3">
+                <label>Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+            </div>
+
+            <button name="login" class="btn btn-primary w-100 btn-login">
+                <i class="bi bi-box-arrow-in-right"></i> Login
+            </button>
+            <div class="text-center mb-3">
+            <small class="text-muted">
+            Akun hanya dapat dibuat oleh admin. Silahkan hubungi admin jika Anda belum memiliki akun.
+            </small>
+        </div>
+        </form>
+
+        <?php include 'template/footer.php'; ?>
+
     </div>
-    </form>
-
-    <?php include 'template/footer.php' ?>
-
-</div>
 
 </div>
 

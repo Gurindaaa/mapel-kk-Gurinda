@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard - Parkir App</tittle>
+    <title>Dashboard - Parkir App</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-</style>
+<style>
     body { background:#f4f6f9; }
 
     .sidebar {
-        width:24px;
+        width:240px;
         height:100vh;
-        postition:fixed;
-        background: linear-gradinet(180deg,#3a7bd5,#2c3e50);
+        position:fixed;
+        background: linear-gradient(180deg,#3a7bd5,#2c3e50);
         color:white;
     }
 
@@ -39,4 +39,4 @@
     }
 </style>
 </head>
-<body></body>
+<body>
